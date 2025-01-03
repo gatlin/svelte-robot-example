@@ -5,7 +5,7 @@ application.
 This is meant to highlight a variety of non-obvious capabilities and not be a
 full-fledged application nor be free of every conceivable bug.
 
-Run it locally with
+## Run locally.
 
 ```bash
 nvm use
@@ -15,48 +15,34 @@ npm run dev -- --open
 
 And your browser should rudely interrupt you with the app page.
 
-## Issues
+## What you should expect it to do.
 
-I need to juggle the URL a *little* more intelligently to cope with non-root
-deployments.
-It's the kind of thing I can do if I know the 1.5 hour of frowning and fiddling
-will be useful to anyone.
+When it boots up the app should immediately redirect from `/` to `/page1`,
+loading some asynchronous data into the machine along the way.
+Each page adds or modifies some state data which is displayed in a very ugly
+manner at the top of the page.
+Page 2 has a loop back to Page 1 to show a simple example of a cycle.
 
-# sv
+## A guide to the source code.
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Fortunately there isn't much code.
+Files of note:
 
-## Creating a project
+- `src/lib/service.ts` is where the machine is defined with the app's behavior.
+- `src/routes/+layout.svelte` is where the machine is connected to the page
+router.
+- `src/routes/page{1,2,3}/+page.svelte` are the pages which access the state
+data and `submit()` events to update the machine, potentially updating the
+data and causing a transition to a new state / page.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## "Why doesn't the back button work?" and other issues.
 
-```bash
-# create a new project in the current directory
-npx sv create
+There's a lot more prior art using state machines to control the behavior of a
+single page than there is controlling an entire app, and of those most I have
+seen are SPAs.
 
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+In `src/routes/+layout.svelte` the machine is started up with the current URL.
+For the back button to work the machine needs to hydrate its data from somewhere.
+In `src/lib/useMachine.ts` and `src/lib/service.ts` in `useMachine` and `useService`
+(resp.) you can see the hooks where data may be initialized to provide a truly
+seamless experience between refreshes.
