@@ -3,6 +3,7 @@
   import { useService } from '$lib/service';
   import { goto } from '$app/navigation';
   import { page } from '$app/state';
+  import { base } from '$app/paths';
 
   let { children }: { children: Snippet } = $props();
   // The machine is initially set according to the current page.
@@ -10,7 +11,7 @@
   // State transitions to states not starting with `_` change the page.
   $effect(() => {
     if (!$service.current.startsWith('_')) {
-      goto($service.current);
+      goto(`${base}/${$service.current}`);
     }
   });
 </script>
