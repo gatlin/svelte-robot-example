@@ -1,2 +1,8 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+	import type { LayoutData } from './$types';
+
+	let { data }: { data: LayoutData } = $props();
+</script>
+
+<h2>Index</h2>
+<pre><code>{JSON.stringify(data, null, 2)}</code></pre>
