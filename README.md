@@ -13,6 +13,8 @@ npm install
 npm run dev -- --open
 ```
 
+And your browser should rudely interrupt you with the app page.
+
 ## Issues
 
 I need to juggle the URL a *little* more intelligently to cope with non-root
