@@ -1,3 +1,25 @@
+# example of using robot in sveltekit
+
+Simple app that demonstrates using a robot3 state machine to drive a SvelteKit
+application.
+This is meant to highlight a variety of non-obvious capabilities and not be a
+full-fledged application nor be free of every conceivable bug.
+
+Run it locally with
+
+```bash
+nvm use
+npm install
+npm run dev -- --open
+```
+
+## Issues
+
+I need to juggle the URL a *little* more intelligently to cope with non-root
+deployments.
+It's the kind of thing I can do if I know the 1.5 hour of frowning and fiddling
+will be useful to anyone.
+
 # sv
 
 Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
