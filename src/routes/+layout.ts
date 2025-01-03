@@ -7,3 +7,5 @@ export const load: LayoutLoad = async () => {
     fromLayout: 'foo'
   };
 };
+
+export const prerender = true;

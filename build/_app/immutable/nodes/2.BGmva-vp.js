@@ -1,0 +1,1 @@
+import{a as n,t as d,s as f}from"../chunks/disclose-version.B-n1kXnl.js";import{s as c,f as m,t as l,d as r,r as s}from"../chunks/runtime.hdRyageX.js";var v=d("<h2>Index</h2> <pre><code> </code></pre>",1);function x(o,p){var e=v(),t=c(m(e),2),a=r(t),i=r(a,!0);l(()=>f(i,JSON.stringify(p.data,null,2))),s(a),s(t),n(o,e)}export{x as component};
