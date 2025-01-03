@@ -1,19 +1,19 @@
 <script lang="ts">
-	import type { LayoutData } from './$types';
-	import { useService, AppEvents } from '$lib/service';
+  import type { LayoutData } from './$types';
+  import { useService, AppEvents } from '$lib/service';
 
-	const service = useService();
+  const service = useService();
 
-	function onSubmit() {
-		$service.submit({
-			type: AppEvents.SubmitPage3,
-			data: {
-				quux: 'cool ranch'
-			}
-		});
-	}
+  function onSubmit() {
+    $service.submit({
+      type: AppEvents.SubmitPage3,
+      data: {
+        quux: 'cool ranch'
+      }
+    });
+  }
 
-	let { data }: { data: LayoutData } = $props();
+  let { data }: { data: LayoutData } = $props();
 </script>
 
 <h2>Page 3</h2>

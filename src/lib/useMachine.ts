@@ -14,11 +14,15 @@ import { writable, type Writable } from 'svelte/store';
  * Usage of setTimeout avoids a poorly understood race condition when using SSR.
  */
 export function useMachine<E, T = unknown>(
-	machine: Machine,
-	event: { [K in keyof E]: T }
+  machine: Machine,
+  event: { [K in keyof E]: T }
 ): Writable<Service<Machine>> {
-	const { subscribe, set, update } = writable(
-		interpret<Machine, E>(machine, (service) => setTimeout(() => void set(service), 0), event)
-	);
-	return { subscribe, set, update };
+  const { subscribe, set, update } = writable(
+    interpret<Machine, E>(
+      machine,
+      (service) => setTimeout(() => void set(service), 0),
+      event
+    )
+  );
+  return { subscribe, set, update };
 }

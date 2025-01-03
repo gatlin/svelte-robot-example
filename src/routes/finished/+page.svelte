@@ -1,13 +1,13 @@
 <script lang="ts">
-	import type { LayoutData } from './$types';
-	import { useService, AppEvents } from '$lib/service';
+  import type { LayoutData } from './$types';
+  import { useService, AppEvents } from '$lib/service';
 
-	const service = useService();
-	function onSubmit() {
-		$service.submit(AppEvents.Reset);
-	}
+  const service = useService();
+  function onSubmit() {
+    $service.submit(AppEvents.Reset);
+  }
 
-	let { data }: { data: LayoutData } = $props();
+  let { data }: { data: LayoutData } = $props();
 </script>
 
 <h2>Finished!</h2>
